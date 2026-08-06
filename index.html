@@ -2,8 +2,15 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Excursión a Semuc Champey</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -19,138 +26,274 @@
 
     </header>
 
-    <hr>
-
     <nav>
 
         <h2>Índice</h2>
 
         <ul>
+
             <li><a href="#descripcion">Descripción</a></li>
+
             <li><a href="#galeria">Galería de Imágenes</a></li>
+
             <li><a href="#itinerario">Itinerario</a></li>
+
             <li><a href="#actividades">Actividades</a></li>
+
+            <li><a href="#cotizacion">Cotización</a></li>
+
+            <li><a href="#reservacion">Reservación</a></li>
+
+            <li><a href="#resenas">Reseñas</a></li>
+
         </ul>
 
     </nav>
 
-    <hr>
+    <main>
 
-    <section id="descripcion">
+        <section id="descripcion">
 
-        <h2>Descripción del Lugar</h2>
+            <h2>Descripción del Lugar</h2>
 
-        <p>
-            Semuc Champey es un monumento natural ubicado en el municipio de Lanquín,
-            Alta Verapaz, Guatemala. Es reconocido por sus piscinas naturales de color
-            turquesa que se forman sobre un puente de piedra caliza bajo el cual fluye
-            el río Cahabón. Rodeado de montañas y abundante vegetación, este destino
-            ofrece un ambiente ideal para disfrutar de la naturaleza y realizar diversas
-            actividades al aire libre.
-        </p>
+            <p>
+                Semuc Champey es un monumento natural ubicado en Lanquín,
+                Alta Verapaz. Es reconocido por sus piscinas naturales de color
+                turquesa formadas sobre un puente de piedra caliza y rodeadas
+                de abundante vegetación.
+            </p>
 
-    </section>
+        </section>
 
-    <hr>
+        <section id="galeria">
 
-    <section id="galeria">
+            <h2>Galería de Imágenes</h2>
 
-        <h2>Galería de Imágenes</h2>
+            <img src="imagenes/semuc1.jpg" alt="Vista panorámica" class="imagen">
 
-        <img src="imagenes/semuc1.jpg" alt="Semuc Champey 1" width="300">
+            <img src="imagenes/semuc2.jpg" alt="Pozas naturales" class="imagen">
 
-        <img src="imagenes/semuc2.jpg" alt="Semuc Champey 2" width="300">
+            <br><br>
 
-        <br><br>
+            <img src="imagenes/semuc3.jpg" alt="Paisaje natural" class="imagen">
 
-        <img src="imagenes/semuc3.jpg" alt="Semuc Champey 3" width="300">
+            <img src="imagenes/semuc4.jpg" alt="Mirador" class="imagen">
 
-        <img src="imagenes/semuc4.jpg" alt="Semuc Champey 4" width="300">
+        </section>
 
-    </section>
+        <!-- Modal -->
 
-    <hr>
+        <div id="modal" class="modal">
 
-    <section id="itinerario">
+            <span id="cerrar">&times;</span>
 
-        <h2>Tabla de Itinerario</h2>
+            <img id="imagenGrande">
 
-        <table border="1" cellpadding="8">
+            <p id="descripcionImagen"></p>
 
-            <tr>
-                <th>Fecha</th>
-                <th>Horario</th>
-                <th>Actividad</th>
-                <th>Lugar</th>
-            </tr>
+        </div>
 
-            <tr>
-                <td>15/09/2026</td>
-                <td>06:00 a.m.</td>
-                <td>Salida desde Ciudad de Guatemala</td>
-                <td>Terminal de Buses</td>
-            </tr>
+        <section id="itinerario">
 
-            <tr>
-                <td>15/09/2026</td>
-                <td>12:30 p.m.</td>
-                <td>Almuerzo</td>
-                <td>Lanquín</td>
-            </tr>
+            <h2>Tabla de Itinerario</h2>
 
-            <tr>
-                <td>15/09/2026</td>
-                <td>02:00 p.m.</td>
-                <td>Recorrido por Semuc Champey</td>
-                <td>Pozas Naturales</td>
-            </tr>
+            <table>
 
-            <tr>
-                <td>15/09/2026</td>
-                <td>04:30 p.m.</td>
-                <td>Visita al Mirador</td>
-                <td>Cerro Semuc Champey</td>
-            </tr>
+                <tr>
 
-            <tr>
-                <td>15/09/2026</td>
-                <td>06:00 p.m.</td>
-                <td>Regreso al hospedaje</td>
-                <td>Lanquín</td>
-            </tr>
+                    <th>Fecha</th>
 
-        </table>
+                    <th>Horario</th>
 
-    </section>
+                    <th>Actividad</th>
 
-    <hr>
+                    <th>Lugar</th>
 
-    <section id="actividades">
+                </tr>
 
-        <h2>Actividades</h2>
+                <tr>
 
-        <ul>
-            <li>Nadar en las pozas naturales.</li>
-            <li>Realizar caminatas por senderos ecológicos.</li>
-            <li>Visitar el mirador de Semuc Champey.</li>
-            <li>Tomar fotografías de los paisajes.</li>
-            <li>Observar la flora y fauna de la región.</li>
-            <li>Explorar las cuevas de Lanquín.</li>
-            <li>Disfrutar de áreas de descanso y picnic.</li>
-            <li>Conocer la gastronomía local.</li>
-        </ul>
+                    <td>15/09/2026</td>
 
-    </section>
+                    <td>06:00 a.m.</td>
 
-    <hr>
+                    <td>Salida desde Ciudad de Guatemala</td>
+
+                    <td>Terminal de Buses</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>15/09/2026</td>
+
+                    <td>12:30 p.m.</td>
+
+                    <td>Almuerzo</td>
+
+                    <td>Lanquín</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>15/09/2026</td>
+
+                    <td>02:00 p.m.</td>
+
+                    <td>Recorrido por Semuc Champey</td>
+
+                    <td>Pozas Naturales</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>15/09/2026</td>
+
+                    <td>04:30 p.m.</td>
+
+                    <td>Visita al Mirador</td>
+
+                    <td>Cerro Semuc Champey</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>15/09/2026</td>
+
+                    <td>06:00 p.m.</td>
+
+                    <td>Regreso al hospedaje</td>
+
+                    <td>Lanquín</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+        <section id="actividades">
+
+            <h2>Actividades</h2>
+
+            <input type="text" id="buscar" placeholder="Buscar actividad">
+
+            <br><br>
+
+            <ul id="listaActividades">
+
+                <li>Nadar en las pozas naturales.</li>
+
+                <li>Realizar caminatas por senderos ecológicos.</li>
+
+                <li>Visitar el mirador de Semuc Champey.</li>
+
+                <li>Tomar fotografías de los paisajes.</li>
+
+                <li>Observar la flora y fauna.</li>
+
+                <li>Explorar las cuevas de Lanquín.</li>
+
+                <li>Disfrutar áreas de descanso.</li>
+
+                <li>Conocer la gastronomía local.</li>
+
+            </ul>
+
+        </section>
+
+        <section id="cotizacion">
+
+            <h2>Cotización de la Excursión</h2>
+
+            <label>Nombre:</label>
+
+            <input type="text" id="nombre">
+
+            <br><br>
+
+            <label>Número de asistentes:</label>
+
+            <input type="number" id="personas">
+
+            <br><br>
+
+            <label>Tipo de paquete:</label>
+
+            <select id="paquete">
+
+                <option value="150">Básico - Q150</option>
+
+                <option value="250">Completo - Q250</option>
+
+                <option value="350">Premium - Q350</option>
+
+            </select>
+
+            <br><br>
+
+            <input type="checkbox" id="transporte">
+
+            <label>Transporte (+Q50)</label>
+
+            <br>
+
+            <input type="checkbox" id="alimentacion">
+
+            <label>Alimentación (+Q75)</label>
+
+            <br>
+
+            <input type="checkbox" id="equipo">
+
+            <label>Equipo (+Q25)</label>
+
+            <br><br>
+
+            <button id="calcular">Calcular Total</button>
+
+            <h3 id="resultado"></h3>
+
+        </section>
+
+        <section id="reservacion">
+
+            <h2>Reservación</h2>
+
+            <button id="enviar">Enviar Solicitud</button>
+
+            <p id="mensaje"></p>
+
+        </section>
+
+        <section id="resenas">
+
+            <h2>Opiniones de Visitantes</h2>
+
+            <div id="opinion">
+
+                <h3 id="persona"></h3>
+
+                <p id="comentario"></p>
+
+            </div>
+
+        </section>
+
+    </main>
 
     <footer>
 
-        <p><strong>NOMBRE:</strong> Luis Samuel Menchú Tun</p>
-         <p><strong>Carnet:</strong> 9490-23-6285</p>
+        <p><strong>Nombre:</strong> Luis Samuel Menchú Tun</p>
 
+        <p><strong>Carnet:</strong> 9490-23-6285</p>
 
     </footer>
+
+    <script src="script.js"></script>
 
 </body>
 
