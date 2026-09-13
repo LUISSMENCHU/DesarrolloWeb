@@ -1,16 +1,7 @@
-# React + Vite
+Link de Netlify: 
+https://stupendous-puffpuff-d31004.netlify.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Luis Samuel Menchú Tun
+9490-23-6285  
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Descripción: Se mejoró la aplicación TechStore implementando un sistema de autenticación mediante useContext y useReducer. Se creó un estado global para controlar el inicio y cierre de sesión, además de almacenar la información del usuario. Se incorporaron los componentes de Login y Perfil, y se modificó el Navbar para mostrar dinámicamente las opciones según el estado de la sesión. También se agregó la información del usuario, tipo de membresía, fecha de acceso e historial de pedidos, manteniendo el diseño con React-Bootstrap.
