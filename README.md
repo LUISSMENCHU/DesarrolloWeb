@@ -1,36 +1,12 @@
-# TechStore — Tarea 4
+En esta práctica se modificó la aplicación TechStore para sustituir la autenticación simulada y la gestión local de productos por una arquitectura cliente-servidor con persistencia real en MongoDB Atlas.
 
-Aplicación React conectada a una API REST con Express y MongoDB Atlas.
+Se desarrolló un backend modular con Node.js y Express, separando rutas, controladores, modelos y configuración de la base de datos mediante Mongoose. Se implementaron los endpoints de registro e inicio de sesión, con validación de credenciales y cifrado hash de contraseñas mediante bcrypt.
 
-## Inicio local
+En el frontend se integraron peticiones asíncronas a la API para registrar usuarios, iniciar y cerrar sesión, consultar el perfil y administrar productos mediante operaciones CRUD. El estado global de autenticación se mantiene con useContext y useReducer, y se incorporaron formularios, mensajes de error y estados de carga.
 
-1. Copia `server/.env.example` a `server/.env` y agrega tu URI privada de MongoDB Atlas. Copia `.env.example` a `.env` en la raíz.
-2. Instala dependencias desde la raíz con `npm install` y dentro de `server` con `npm install`.
-3. En una terminal ejecuta `npm run dev` desde la raíz. En otra, desde `server`, ejecuta `npm run dev`.
-4. Registra usuarios mediante la API (ver `docs/endpoints.json`). El frontend permite iniciar sesión y administrar productos.
+También se configuraron variables de entorno para proteger las credenciales y separar la configuración del frontend y el backend. Se verificó el funcionamiento de las operaciones de productos y el registro de usuarios en MongoDB Atlas.
 
-No subas `server/.env` ni credenciales de Atlas. En Atlas agrega tu IP a Network Access y crea un usuario de base de datos.
+Documentación técnica: docs/endpoints.json contiene ejemplos de solicitudes de la API y el backend está organizado en módulos de configuración, modelos, controladores y rutas.
 
-## Arquitectura del backend
-
-```text
-server/src/
-├── config/db.js                 conexión Mongoose
-├── models/User.js               usuarios y credenciales cifradas
-├── models/Producto.js           catálogo de TechStore
-├── controllers/authController.js registro y login
-├── controllers/productController.js CRUD y búsqueda
-├── routes/authRoutes.js         /api/auth
-├── routes/productRoutes.js      /api/recursos
-└── server.js                    Express, CORS, errores y arranque
-```
-
-El endpoint de recursos trabaja con productos de TechStore. Las contraseñas se guardan con bcrypt y nunca se devuelven en respuestas.
-
-## Endpoints
-
-Las solicitudes de ejemplo están en [`docs/endpoints.json`](docs/endpoints.json). El frontend usa `VITE_API_URL` y por defecto apunta a `http://localhost:3000/api`.
-
-## Despliegue y entrega
-
-Configura `MONGODB_URI`, `PORT` y `CLIENT_ORIGIN` en el servicio backend y `VITE_API_URL` en el frontend. Los enlaces públicos dependen de las cuentas de despliegue del equipo. Agrega al entregar nombre completo, carné, contribuciones y URL desplegadas de cada integrante.
+Netlify: 
+https://exquisite-cat-8960da.netlify.app/
