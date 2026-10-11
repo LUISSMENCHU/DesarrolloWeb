@@ -1,0 +1,13 @@
+{
+  "info": { "name": "TechStore API - Tarea 4", "description": "Ejemplos para importar o recrear en Postman/Thunder Client", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "variable": [{ "key": "baseUrl", "value": "http://localhost:3000" }, { "key": "productoId", "value": "REEMPLAZAR_CON_ID_MONGODB" }],
+  "item": [
+    { "name": "Registro", "request": { "method": "POST", "url": "{{baseUrl}}/api/auth/register", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Ana López\",\n  \"email\": \"ana@example.com\",\n  \"password\": \"ClaveSegura123\"\n}", "options": { "raw": { "language": "json" } } } } },
+    { "name": "Login", "request": { "method": "POST", "url": "{{baseUrl}}/api/auth/login", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"email\": \"ana@example.com\",\n  \"password\": \"ClaveSegura123\"\n}", "options": { "raw": { "language": "json" } } } } },
+    { "name": "Listar productos (buscar: ?q=laptop)", "request": { "method": "GET", "url": "{{baseUrl}}/api/recursos?q=laptop" } },
+    { "name": "Detalle producto", "request": { "method": "GET", "url": "{{baseUrl}}/api/recursos/{{productoId}}" } },
+    { "name": "Crear producto", "request": { "method": "POST", "url": "{{baseUrl}}/api/recursos", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"nombre\": \"Laptop Dell Inspiron\",\n  \"descripcion\": \"Laptop para trabajo y estudio\",\n  \"categoria\": \"Laptops\",\n  \"precio\": 5500,\n  \"stock\": 8\n}", "options": { "raw": { "language": "json" } } } } },
+    { "name": "Actualizar producto", "request": { "method": "PUT", "url": "{{baseUrl}}/api/recursos/{{productoId}}", "header": [{ "key": "Content-Type", "value": "application/json" }], "body": { "mode": "raw", "raw": "{\n  \"precio\": 5200,\n  \"stock\": 6\n}", "options": { "raw": { "language": "json" } } } } },
+    { "name": "Eliminar producto", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/recursos/{{productoId}}" } }
+  ]
+}
