@@ -6,12 +6,15 @@ import authRoutes from './routes/authRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 
 const app = express()
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  'http://localhost:5175',
+  process.env.CLIENT_ORIGIN
+].filter(Boolean)
+
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:5174',
-    'http://localhost:5175'
-  ]
+  origin: allowedOrigins
 }))
 app.use(express.json())
 app.get('/api/health', (_req, res) => res.json({ status: 'ok' }))
