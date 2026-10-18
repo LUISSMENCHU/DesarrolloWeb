@@ -4,6 +4,8 @@ const AuthContext = createContext()
 
 const estadoInicial = {
   usuario: null,
+  token: null,
+  expirationMessage: '',
   isAuthenticated: false
 }
 
@@ -13,13 +15,17 @@ function authReducer(state, action) {
 
     case 'LOGIN':
       return {
-        usuario: action.payload,
+        usuario: action.payload.usuario,
+        token: action.payload.token,
+        expirationMessage: '',
         isAuthenticated: true
       }
 
     case 'LOGOUT':
       return {
         usuario: null,
+        token: null,
+        expirationMessage: action.payload?.message || '',
         isAuthenticated: false
       }
 
@@ -48,7 +54,10 @@ export function AuthProvider({ children }) {
     () => {
       try {
         const usuario = JSON.parse(localStorage.getItem('techstore_usuario'))
-        return usuario ? { usuario, isAuthenticated: true } : estadoInicial
+        const token = localStorage.getItem('techstore_token')
+        return usuario && token
+          ? { ...estadoInicial, usuario, token, isAuthenticated: true }
+          : estadoInicial
       } catch {
         return estadoInicial
       }
@@ -56,9 +65,23 @@ export function AuthProvider({ children }) {
   )
 
   useEffect(() => {
-    if (state.usuario) localStorage.setItem('techstore_usuario', JSON.stringify(state.usuario))
-    else localStorage.removeItem('techstore_usuario')
-  }, [state.usuario])
+    if (state.usuario && state.token) {
+      localStorage.setItem('techstore_usuario', JSON.stringify(state.usuario))
+      localStorage.setItem('techstore_token', state.token)
+    } else {
+      localStorage.removeItem('techstore_usuario')
+      localStorage.removeItem('techstore_token')
+    }
+  }, [state.usuario, state.token])
+
+  useEffect(() => {
+    function onTokenExpired(event) {
+      dispatch({ type: 'LOGOUT', payload: { message: event.detail?.message } })
+    }
+
+    window.addEventListener('techstore:token-expired', onTokenExpired)
+    return () => window.removeEventListener('techstore:token-expired', onTokenExpired)
+  }, [])
 
   return (
     <AuthContext.Provider value={{ state, dispatch }}>

@@ -36,6 +36,7 @@ export default function Productos() {
   function editar(producto) {
     setEditingId(producto._id)
     setForm({ nombre: producto.nombre, categoria: producto.categoria, descripcion: producto.descripcion || '', precio: producto.precio, stock: producto.stock || 0 })
+    document.getElementById('formulario-producto')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   async function eliminar(id) {
@@ -58,7 +59,7 @@ export default function Productos() {
         </Card.Footer></Card>
       </div>)}
     </div>}
-    <Card className="p-4 mt-3 mx-auto" style={{ maxWidth: 650 }}>
+    <Card id="formulario-producto" className="p-4 mt-3 mx-auto" style={{ maxWidth: 650 }}>
       <h3>{editingId ? 'Editar producto' : 'Agregar producto'}</h3>
       <Form onSubmit={guardar}>
         <Form.Group className="mb-3"><Form.Label>Nombre</Form.Label><Form.Control required value={form.nombre} onChange={e => setForm({ ...form, nombre: e.target.value })} /></Form.Group>

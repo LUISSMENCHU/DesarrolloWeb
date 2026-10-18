@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs'
 import User from '../models/User.js'
+import jwt from 'jsonwebtoken'
 
 const publicUser = (user) => ({ id: user._id, nombre: user.nombre, email: user.email, rol: user.rol, createdAt: user.createdAt })
 
@@ -14,13 +15,57 @@ export async function register(req, res, next) {
     res.status(201).json({ usuario: publicUser(user) })
   } catch (error) { next(error) }
 }
-
 export async function login(req, res, next) {
   try {
     const { email, password } = req.body
-    if (!email || !password) return res.status(400).json({ message: 'Correo y contraseña son obligatorios.' })
-    const user = await User.findOne({ email: email.toLowerCase().trim() }).select('+password')
-    if (!user || !(await bcrypt.compare(password, user.password))) return res.status(401).json({ message: 'Correo o contraseña incorrectos.' })
-    res.json({ usuario: publicUser(user) })
-  } catch (error) { next(error) }
+
+    if (!email || !password) {
+      return res.status(400).json({
+        message: 'Correo y contraseña son obligatorios.'
+      })
+    }
+
+    const user = await User.findOne({
+      email: email.toLowerCase().trim()
+    }).select('+password')
+
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({
+        message: 'Correo o contraseña incorrectos.'
+      })
+    }
+
+    const secret = process.env.JWT_SECRET
+    const expiresIn = process.env.JWT_EXPIRES_IN
+
+    if (!secret || expiresIn !== '5m') {
+      return res.status(500).json({
+        message: 'La configuración de JWT no es válida.'
+      })
+    }
+
+    const token = jwt.sign(
+      {
+        id: user._id.toString(),
+        email: user.email,
+        role: user.rol
+      },
+      secret,
+      { expiresIn: '5m' }
+    )
+
+    return res.json({
+      usuario: {
+        id: user._id,
+        nombre: user.nombre,
+        email: user.email,
+        rol: user.rol,
+        createdAt: user.createdAt
+      },
+      token,
+      expiresIn: 300
+    })
+  } catch (error) {
+    next(error)
+  }
 }

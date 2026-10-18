@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
 import { api } from '../services/api'
+import Registro from './Registro'
 
 function Login() {
-  const { dispatch } = useAuth()
+  const { state, dispatch } = useAuth()
+  const navigate = useNavigate()
   const [correo, setCorreo] = useState('')
   const [contrasena, setContrasena] = useState('')
   const [error, setError] = useState('')
@@ -15,10 +18,13 @@ function Login() {
     setError('')
     setLoading(true)
     try {
-      const { usuario } = await api('/auth/login', {
+      const { usuario, token } = await api('/auth/login', {
         method: 'POST', body: JSON.stringify({ email: correo, password: contrasena }),
       })
-      dispatch({ type: 'LOGIN', payload: usuario })
+      localStorage.setItem('techstore_usuario', JSON.stringify(usuario))
+      localStorage.setItem('techstore_token', token)
+      dispatch({ type: 'LOGIN', payload: { usuario, token } })
+      navigate('/')
     } catch (err) {
       setError(err.message)
     } finally {
@@ -27,8 +33,10 @@ function Login() {
   }
 
   return (
-    <Card className="p-4 mx-auto" style={{ maxWidth: '500px' }}>
+    <main className="container py-5">
+    <Card className="p-4 mx-auto mb-4" style={{ maxWidth: '500px' }}>
       <h2 className="text-center mb-4">Iniciar Sesión</h2>
+      {state.expirationMessage && <Alert variant="warning">{state.expirationMessage}</Alert>}
       {error && <Alert variant="danger">{error}</Alert>}
       <Form onSubmit={iniciarSesion}>
         <Form.Group className="mb-3">
@@ -42,6 +50,8 @@ function Login() {
         <Button variant="primary" type="submit" disabled={loading}>{loading ? 'Validando…' : 'Iniciar Sesión'}</Button>
       </Form>
     </Card>
+    <Registro />
+    </main>
   )
 }
 

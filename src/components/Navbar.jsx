@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import { useAuth } from '../context/AuthContext'
+import { Link } from 'react-router-dom'
 
 function Menu() {
 
@@ -38,7 +39,7 @@ function Menu() {
           <Nav>
 
             {!state.isAuthenticated && (
-              <Nav.Link href="#login">
+              <Nav.Link as={Link} to="/login">
                 Iniciar Sesión
               </Nav.Link>
             )}
