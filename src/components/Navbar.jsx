@@ -29,9 +29,6 @@ function Menu() {
           <Nav className="me-auto">
             <Nav.Link href="#inicio">Inicio</Nav.Link>
             <Nav.Link href="#productos">Productos</Nav.Link>
-            <Nav.Link href="#laptops">Laptops</Nav.Link>
-            <Nav.Link href="#celulares">Celulares</Nav.Link>
-            <Nav.Link href="#accesorios">Accesorios</Nav.Link>
             <Nav.Link href="#contacto">Contacto</Nav.Link>
           </Nav>
 
