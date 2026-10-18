@@ -1,12 +1,4 @@
-En esta práctica se modificó la aplicación TechStore para sustituir la autenticación simulada y la gestión local de productos por una arquitectura cliente-servidor con persistencia real en MongoDB Atlas.
-
-Se desarrolló un backend modular con Node.js y Express, separando rutas, controladores, modelos y configuración de la base de datos mediante Mongoose. Se implementaron los endpoints de registro e inicio de sesión, con validación de credenciales y cifrado hash de contraseñas mediante bcrypt.
-
-En el frontend se integraron peticiones asíncronas a la API para registrar usuarios, iniciar y cerrar sesión, consultar el perfil y administrar productos mediante operaciones CRUD. El estado global de autenticación se mantiene con useContext y useReducer, y se incorporaron formularios, mensajes de error y estados de carga.
-
-También se configuraron variables de entorno para proteger las credenciales y separar la configuración del frontend y el backend. Se verificó el funcionamiento de las operaciones de productos y el registro de usuarios en MongoDB Atlas.
-
-Documentación técnica: docs/endpoints.json contiene ejemplos de solicitudes de la API y el backend está organizado en módulos de configuración, modelos, controladores y rutas.
-
-Netlify: 
-https://exquisite-cat-8960da.netlify.app/
+TechStore es una aplicación web desarrollada con React, Node.js, Express y MongoDB Atlas, con el frontend desplegado en Netlify y la API en Render. El inicio de sesión valida las credenciales y genera un JSON Web Token (JWT) firmado, cuyo payload identifica al usuario mediante su ID, correo y rol, y cuya vigencia está limitada a cinco minutos. El backend valida el token recibido en el encabezado Authorization: Bearer <token> y protege las rutas privadas de productos; si el token falta, no es válido o expiró, responde con un error 401 Unauthorized. En el frontend, un cliente centralizado adjunta el token a las solicitudes protegidas y gestiona la expiración eliminando los datos de sesión, mostrando un aviso al usuario y redirigiéndolo al inicio de sesión. Las credenciales de MongoDB y la clave de firma JWT se mantienen en variables de entorno. 
+Frontend: https://gorgeous-manatee-e81e63.netlify.app/ 
+Backend: https://desarrolloweb-a2hd.onrender.com/api/health 
+Integrante: Luis Samuel Menchu Tun, carné 9490 23 6285.
